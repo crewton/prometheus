@@ -264,6 +264,7 @@ func (cd *ConsulDiscovery) watchService(srv *consulService, ch chan<- *config.Ta
 		}
 		srv.lastIndex = meta.LastIndex
 		srv.tgroup.Targets = make([]model.LabelSet, 0, len(nodes))
+		srv.tgroup.Source = srv.name
 
 		for _, node := range nodes {
 			addr := fmt.Sprintf("%s:%d", node.Address, node.ServicePort)
